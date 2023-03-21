@@ -1,4 +1,4 @@
-## IMPLEMENTACION MICROSERVICIO SPRING BOOT.
+## IMPLEMENTACION DE UN MICROSERVICIO USANDO SPRING BOOT.
 
 Proyecto Gestionado con Maven  
 Desarrollado en SpringBoot 2.7.10-SNAPSHOT con Java 11  
@@ -12,7 +12,7 @@ Base de datos embebida H2
 
 ## 1\. Generar el ejecutable .jar
 
-*   Situarse en el directorio del proyecto y ejecutar el comando siguiente via Maven.
+Situarse en el directorio del proyecto y ejecutar el comando siguiente via Maven.
 
 ```plaintext
 mvn clean package
