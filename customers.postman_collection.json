@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "b4469255-c050-45fb-bf5d-674166740bc7",
+		"name": "customers",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10108950"
+	},
+	"item": [
+		{
+			"name": "crear",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{      \r\n    \"nombres\": \"Jorge\",  \r\n    \"apellidos\": \"LOPEZ PALOMINO\",  \r\n    \"email\": \"mail0105@mail.com\",\r\n    \"dni\": \"70707078\" ,\r\n    \"fechaCreacion\": \"2023-03-20\",\r\n    \"fechaNacimiento\": \"1999-11-09\"\r\n}  ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/customer/crear",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"crear"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta sin filtro",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/customer/listar",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"listar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta por dni",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/customer/dni/73963112",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"dni",
+						"73963112"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta por email",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/customer/email/mail003@mail.com",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"email",
+						"mail003@mail.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Clientes nacidos por mes/año",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/customer/mesandanio",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"mesandanio"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mes/Año con mayor cantidad nacidos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/customer/nacimientos/mayor",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"nacimientos",
+						"mayor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mes/Año con menor cantidad nacidos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/customer/nacimientos/menor",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"nacimientos",
+						"menor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tasa natalidad",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/customer/natalidad",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"natalidad"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
