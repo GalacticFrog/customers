@@ -1,0 +1,245 @@
+swagger: '2.0'
+info:
+  description: Este es un servidor de muestra que expone los endpoints del microservicio Customers.
+  version: '1.0'
+  title: Documentacion Api 
+  contact: {}
+  
+host: localhost:8080
+basePath: /
+tags:
+  - name: cliente
+    description: Endpoints microservicio Customer
+paths:
+  /customer/crear:
+    post:
+      tags:
+        - cliente-controller
+      summary: Endpoint Creación de nuevo cliente
+      operationId: crearUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: Nuevocliente
+          description: Nuevocliente
+          required: true
+          schema:
+            $ref: '#/definitions/Cliente'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Cliente'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /customer/dni/{dni}:
+    get:
+      tags:
+        - cliente-controller
+      summary: Consulta de clientes por DNI
+      operationId: obtenerClientePorDniUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: dni
+          in: path
+          description: dni
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Cliente'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /customer/email/{email}:
+    get:
+      tags:
+        - cliente-controller
+      summary: Consulta de clientes por Email
+      operationId: obtenerClientePorEmailUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: email
+          in: path
+          description: email
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Cliente'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /customer/listar:
+    get:
+      tags:
+        - cliente-controller
+      summary: Consulta de clientes sin filtros.
+      operationId: listarUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Cliente'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /customer/mesandanio:
+    get:
+      tags:
+        - cliente-controller
+      summary: Cantidad de clientes nacidos por mes/año
+      operationId: getMesAndAnioUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            additionalProperties:
+              type: array
+              items:
+                $ref: '#/definitions/MesAndAnioDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /customer/nacimientos/mayor:
+    get:
+      tags:
+        - cliente-controller
+      summary: Mes/Año con mayor cantidad de clientes nacidos
+      operationId: getNacimientosMayorUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/MesAndAnioDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /customer/nacimientos/menor:
+    get:
+      tags:
+        - cliente-controller
+      summary: Mes/Año con menor cantidad de clientes nacidos
+      operationId: getNacimientosMenorUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/MesAndAnioDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /customer/natalidad:
+    get:
+      tags:
+        - cliente-controller
+      summary: Taza de Natalidad de cada mes
+      operationId: getNatalidadUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/NatalidadDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+definitions:
+  Cliente:
+    type: object
+    properties:
+      apellidos:
+        type: string
+      dni:
+        type: string
+      email:
+        type: string
+      fechaCreacion:
+        type: string
+        format: date-time
+      fechaNacimiento:
+        type: string
+        format: date-time
+      id:
+        type: integer
+        format: int64
+      nombres:
+        type: string
+    title: Cliente
+  MesAndAnioDTO:
+    type: object
+    properties:
+      anio:
+        type: string
+      cantidad:
+        type: integer
+        format: int32
+      mes:
+        type: string
+    title: MesAndAnioDTO
+  NatalidadDTO:
+    type: object
+    properties:
+      cantidad:
+        type: integer
+        format: int32
+      mes:
+        type: string
+      tasa:
+        type: number
+        format: double
+    title: NatalidadDTO
